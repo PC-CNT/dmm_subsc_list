@@ -20,7 +20,7 @@ jobs:
       - name: Run .py file
         run: |
           python dmm_subsc_list.py
-          find
+          # find
           
       - name: Setup git then commit & push
         run: |
