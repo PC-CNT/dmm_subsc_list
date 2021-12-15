@@ -1,0 +1,14 @@
+on:
+  schedule:
+    # 毎週金曜日の05:00(JSTでは14:00)に実行
+    - cron: '0 5 * * 5'
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup
+        run: echo test
