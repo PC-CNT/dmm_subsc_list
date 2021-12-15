@@ -63,7 +63,7 @@ def main():
             dic_temp = conv_dic(soup)
             if dic_temp:
                 output_dic = dict(**output_dic, **dic_temp)
-                time.sleep(3)
+                time.sleep(0.8)
             else:
                 break
         elif page.status_code == 404:
@@ -72,8 +72,8 @@ def main():
         else:
             continue
         p += 1
-    os.makedirs("output_json", exist_ok=True)
-    with open(r"output_json\dmm_subsc_list_.json", "w") as f:
+    os.makedirs("dist", exist_ok=True)
+    with open(os.path.join("dist/", "dmm_subsc_list.json" ), "w") as f:
         json.dump(output_dic, f, indent=4, ensure_ascii=False)
         print("json書き出し完了")
     print("Done.")
