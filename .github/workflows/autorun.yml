@@ -7,8 +7,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup
-        run: echo test
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        
+      - name: Install modules
+        run: |
+          pip install requests
+          pip install beautifulsoup4
+      
+      - name: Run .py file
+        run: |
+          python dmm_subsc_list.py
+          find
+          
+      - name: Setup git then commit & push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Auto generated"
+          git push
