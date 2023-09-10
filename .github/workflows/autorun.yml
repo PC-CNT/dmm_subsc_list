@@ -1,8 +1,10 @@
-on:
-  schedule:
-    # 毎週金曜日の05:00(JSTでは14:00)に実行
-    - cron: '0 5 * * 5'
+name: Autorun
 
+on:
+  workflow_dispatch:
+  # schedule:
+  #   # 毎週金曜日の05:00(JSTでは14:00)に実行
+  #   - cron: "0 5 * * 5"
 
 jobs:
   build:
@@ -13,18 +15,18 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-        
+          python-version: "3.10"
+
       - name: Install modules
         run: |
           pip install requests
           pip install beautifulsoup4
-      
+
       - name: Run .py file
         run: |
           python dmm_subsc_list.py
           # find
-          
+
       - name: Setup git then commit & push
         run: |
           git config user.name "github-actions[bot]"
